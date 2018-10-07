@@ -13,7 +13,7 @@ class Route(object):
     @return void
     '''
 
-    def __init__(self, url, controller, method, middleware_group=None, personal_middleware=None):
+    def __init__(self, url: str, controller: str, method: str, middleware_group=None, personal_middleware=None):
         self.url = url
         self.controller = controller
         self.method = method
@@ -33,7 +33,7 @@ class Route(object):
     @return void
     '''
 
-    def middleware(self, middleware):
+    def middleware(self, middleware: str):
         self.personal_middleware.append(middleware)
 
     '''
@@ -42,5 +42,5 @@ class Route(object):
     @return void
     '''
 
-    def name(self, name):
+    def name(self, name: str):
         self.name = name

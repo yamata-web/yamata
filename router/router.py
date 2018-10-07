@@ -15,7 +15,7 @@ class Router(object):
     }
 
     @classmethod
-    def match(cls, method, url):
+    def match(cls, method: str, url: str):
         # match static router
         if (method, url) in cls.static_router.keys():
             return cls.static_router[(method, url)].controller, None

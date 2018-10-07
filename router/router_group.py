@@ -17,14 +17,14 @@ class RouterGroup(object):
         self.namespace = RouterGroup.revise_namespace(namespace)
 
     @staticmethod
-    def revise_prefix(prefix):
+    def revise_prefix(prefix: str):
         if prefix is None:
             return ''
         prefix.strip('/') + '/'
         return prefix
 
     @staticmethod
-    def revise_namespace(namespace):
+    def revise_namespace(namespace: str):
         if namespace is None:
             return ''
         namespace.strip('.') + '.'
@@ -38,19 +38,19 @@ class RouterGroup(object):
         router_group.namespace += RouterGroup.revise_namespace(namespace)
         return router_group
 
-    def get(self, url, controller):
+    def get(self, url: str, controller: str):
         self.add_route(url, controller, 'get')
 
-    def post(self, url, controller):
+    def post(self, url: str, controller: str):
         self.add_route(url, controller, 'post')
 
-    def put(self, url, controller):
+    def put(self, url: str, controller: str):
         self.add_route(url, controller, 'put')
 
-    def delete(self, url, controller):
+    def delete(self, url: str, controller: str):
         self.add_route(url, controller, 'delete')
 
-    def add_route(self, url, controller, method):
+    def add_route(self, url: str, controller: str, method: str):
         url = ''.join(['/', self.prefix, url.strip('/'), '/'])
         controller = ''.join(['.', self.namespace, controller.strip('.')])
         pattern = re.compile(r'(\$\w+)/')
