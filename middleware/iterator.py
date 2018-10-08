@@ -7,7 +7,7 @@ class Iterator(object):
         self.index = index
         self.middleware = middleware
 
-    def next(self, request):
+    def next(self, request: Request):
         self.index += 1
         if self.index < len(self.middleware):
             return self.middleware[self.index](request, self.next)

@@ -38,18 +38,49 @@ class RouterGroup(object):
         router_group.namespace += RouterGroup.revise_namespace(namespace)
         return router_group
 
+    '''
+    add a get route in static_router or dynamic_router
+    @param  str  url
+    @return str  controller
+    @return void
+    '''
     def get(self, url: str, controller: str):
         self.add_route(url, controller, 'get')
 
+    '''
+    add a post route in static_router or dynamic_router
+    @param  str  url
+    @return str  controller
+    @return void
+    '''
     def post(self, url: str, controller: str):
         self.add_route(url, controller, 'post')
 
+    '''
+    add a put route in static_router or dynamic_router
+    @param  str  url
+    @return str  controller
+    @return void
+    '''
     def put(self, url: str, controller: str):
         self.add_route(url, controller, 'put')
 
+    '''
+    add a delete route in static_router or dynamic_router
+    @param  str  url
+    @return str  controller
+    @return void
+    '''
     def delete(self, url: str, controller: str):
         self.add_route(url, controller, 'delete')
 
+    '''
+    add a route in static_router or dynamic_router.
+    @param  str  url
+    @return str  controller
+    @param  str  method
+    @return void
+    '''
     def add_route(self, url: str, controller: str, method: str):
         url = ''.join(['/', self.prefix, url.strip('/'), '/'])
         controller = ''.join(['.', self.namespace, controller.strip('.')])

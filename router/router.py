@@ -14,6 +14,16 @@ class Router(object):
         'DELETE': {}
     }
 
+    '''
+    match a url in static_router or dynamic_router,
+    if matched static_router, return route instance and none
+    if matched dynamic_router, return route instance and pattern_dict
+    if not return none and none
+    @param  str  method
+    @param  str  url
+    @return route instance
+    @return dict pattern_dict
+    '''
     @classmethod
     def match(cls, method: str, url: str):
         # match static router
