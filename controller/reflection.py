@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import inspect
+import app.controller
 
 class Reflection(object):
     @staticmethod
@@ -16,4 +17,4 @@ class Reflection(object):
         for key in arglist.args:
             if key in arglist.annotations:
                 argdict[key] = arglist.annotations[key]()
-        funcObj(**argdict)
+        return funcObj(**argdict)

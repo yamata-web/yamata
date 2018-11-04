@@ -45,7 +45,7 @@ class RouterGroup(object):
     @return void
     '''
     def get(self, url: str, controller: str):
-        self.add_route(url, controller, 'get')
+        self.add_route(url, controller, 'GET')
 
     '''
     add a post route in static_router or dynamic_router
@@ -54,7 +54,7 @@ class RouterGroup(object):
     @return void
     '''
     def post(self, url: str, controller: str):
-        self.add_route(url, controller, 'post')
+        self.add_route(url, controller, 'POST')
 
     '''
     add a put route in static_router or dynamic_router
@@ -63,7 +63,7 @@ class RouterGroup(object):
     @return void
     '''
     def put(self, url: str, controller: str):
-        self.add_route(url, controller, 'put')
+        self.add_route(url, controller, 'PUT')
 
     '''
     add a delete route in static_router or dynamic_router
@@ -72,7 +72,7 @@ class RouterGroup(object):
     @return void
     '''
     def delete(self, url: str, controller: str):
-        self.add_route(url, controller, 'delete')
+        self.add_route(url, controller, 'DELETE')
 
     '''
     add a route in static_router or dynamic_router.
