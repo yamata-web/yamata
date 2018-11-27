@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
+from yamata.base.request import Request as BaseRequest
 
 
-class Request(object):
-
+class Request(BaseRequest):
     '''
     Create a request instance.
     @param  dict  env
     @return void
     '''
+
     def __init__(self, env):
         self.env = env
         self.method = env['REQUEST_METHOD']
@@ -21,6 +22,7 @@ class Request(object):
     @param  str  http_referer
     @return dict parameter
     '''
+
     def parameter_init(self, http_referer):
         parameter = {}
         parameter_list = http_referer.split('?')

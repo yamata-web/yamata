@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from yamata.request.request import Request
+from yamata.base.request import Request
 
 
 class Iterator(object):

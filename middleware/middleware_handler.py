@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from yamata.base.request import Request
 from .iterator import Iterator
 
 
@@ -37,7 +38,7 @@ class MiddlewareHandler(object):
     @return Request or Response 
     '''
     @staticmethod
-    def handle_global_middleware(request):
+    def handle_global_middleware(request: Request):
         if len(MiddlewareHandler.middleware) > 0:
             return MiddlewareHandler.middleware[0](
                 request, Iterator(MiddlewareHandler.middleware).next
