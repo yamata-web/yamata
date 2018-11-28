@@ -58,6 +58,6 @@ class MiddlewareHandler(object):
         for key in route.personal_middleware:
             middleware.append(MiddlewareHandler.route_middleware[key])
         if len(middleware) > 0:
-            return middleware[0](request, Iterator(middleware).next)
+            return middleware[0].handle(request, Iterator(middleware).next)
         else:
             return request

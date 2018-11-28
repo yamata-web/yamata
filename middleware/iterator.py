@@ -10,6 +10,6 @@ class Iterator(object):
     def next(self, request: Request):
         self.index += 1
         if self.index < len(self.middleware):
-            return self.middleware[self.index](request, self.next)
+            return self.middleware[self.index].handle(request, self.next)
         else:
             return request
