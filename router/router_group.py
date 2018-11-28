@@ -42,55 +42,57 @@ class RouterGroup(object):
     add a get route in static_router or dynamic_router
     @param  str  url
     @return str  controller
-    @return void
+    @return Route
     '''
     def get(self, url: str, controller: str):
-        self.add_route(url, controller, 'GET')
+        return self.add_route(url, controller, 'GET')
 
     '''
     add a post route in static_router or dynamic_router
     @param  str  url
     @return str  controller
-    @return void
+    @return Route
     '''
     def post(self, url: str, controller: str):
-        self.add_route(url, controller, 'POST')
+        return self.add_route(url, controller, 'POST')
 
     '''
     add a put route in static_router or dynamic_router
     @param  str  url
     @return str  controller
-    @return void
+    @return Route
     '''
     def put(self, url: str, controller: str):
-        self.add_route(url, controller, 'PUT')
+        return self.add_route(url, controller, 'PUT')
 
     '''
     add a delete route in static_router or dynamic_router
     @param  str  url
     @return str  controller
-    @return void
+    @return Route
     '''
     def delete(self, url: str, controller: str):
-        self.add_route(url, controller, 'DELETE')
+        return self.add_route(url, controller, 'DELETE')
 
     '''
     add a route in static_router or dynamic_router.
     @param  str  url
     @return str  controller
     @param  str  method
-    @return void
+    @return Route
     '''
     def add_route(self, url: str, controller: str, method: str):
         url = ''.join(['/', self.prefix, url.strip('/'), '/'])
         controller = ''.join(['.', self.namespace, controller.strip('.')])
         pattern = re.compile(r'(\$\w+)/')
         length = len(pattern.findall(url))
+        route = Route(url, controller, method, self.middleware_group_list)
         if length > 0:
             url = re.sub(pattern, '(\w+?)/', url)
             Router.dynamic_router[method][url] = {
-                'route': Route(url, controller, method, self.middleware_group_list),
+                'route': route,
                 'pattern_list': pattern.findall(url)
             }
         else:
-            Router.static_router[(method, url)] = Route(url, controller, method, self.middleware_group_list)
+            Router.static_router[(method, url)] = route
+        return route
